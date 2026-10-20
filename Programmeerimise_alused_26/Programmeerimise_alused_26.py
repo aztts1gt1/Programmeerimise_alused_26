@@ -71,3 +71,7 @@ print("√16 =", math.sqrt(16))
 print("sin(π/2) =", math.sin(math.pi / 2))
 print("sin(30°) =", round(math.sin(math.radians(30)), 2))
 print("5! =", math.factorial(5))
+
+
+
+
