@@ -16,7 +16,7 @@
 # Omadused day, month, year kasutatakse päeva, kuu ja aasta parameetri leidmiseks date klassist.
 # Arvuta mitu päeva on jäänud kuu lõpuni, aasta lõpuni.
 # Arvuta oma vanus aastates, kuudes ja päevades.
-
+from calendar import *
 from datetime import *
 tana = date.today()
 print(f"Täna on {tana}")
@@ -70,7 +70,15 @@ print(f"Kogu jagaja sulgudes 3 + 8 / ((4 - 2) * 4) vastus: {tulemus_4}")
 # Leia ja väljasta ekraanile ruudu pindala, ruudu ümbermõõt, ringi pindala, ringi ümbermõõt.
 
 import math
-R = float(input("Sisesta ringi raadius R: "))
+while True:
+    try:
+        R = float(input("Sisesta ringi raadius R: "))
+        if R <= 0:
+            print("Raadius peab olema suurem kui null!")
+            continue
+        break
+    except ValueError:
+        print("Viga! Palun sisesta korrektne arv (murdarv või täisarv).")
 a = 2 * R
 ruudu_pindala = a ** 2
 ruudu_ümbermoot = 4 * a
@@ -81,6 +89,7 @@ print(f"Ruudu pindala: {round(ruudu_pindala, 2)}")
 print(f"Ruudu ümbermõõt: {round(ruudu_ümbermoot, 2)}")
 print(f"Ringi pindala: {round(ringi_pindala, 2)}")
 print(f"Ringi ümbermõõt: {round(ringi_ümbermoot, 2)}")
+
 
 
 
@@ -156,8 +165,16 @@ print(tekst.upper())
 # Ülesanne 7.
 # Koosta programm, mis küsib kasutajalt ristküliku lähiskülgede pikkused ning väljastab ekraanile ristküliku ümbermõõdu ja pindala.
 
-a = float(input("Sisesta esimese külje pikkus: "))
-b = float(input("Sisesta teise külje pikkus: "))
+while True:
+    try:
+        a = float(input("Sisesta esimese külje pikkus: "))
+        b = float(input("Sisesta teise külje pikkus: "))
+        if a <= 0 or b <= 0:
+            print("Küljad ei saa olla null!")
+            continue
+        break
+    except ValueError:
+        print("Viga! Palun sisesta korrektne arv (murdarv või täisarv).")
 ümbermoot = 2 * (a + b)
 pindala = a * b
 print(f"Ristküliku ümbermõõt on: {ümbermoot}")
@@ -172,8 +189,16 @@ print(f"Ristküliku pindala on: {pindala}")
 #     Kasutaja sisestab läbitud kilomeetrid
 #     Programm leiab kütusekulu 100km kohta keskmiselt
 
-tangitud_liitrid = float(input("Sisesta tangitud kütuse liitrid: "))
-labitud_kilomeetrid = float(input("Sisesta läbitud kilomeetrid: "))
+while True:
+    try:
+        tangitud_liitrid = float(input("Sisesta tangitud kütuse liitrid: "))
+        labitud_kilomeetrid = float(input("Sisesta läbitud kilomeetrid: "))
+        if labitud_kilomeetrid <= 0:
+            print("Läbitud kilomeetrid peavad olema suuremad kui null!")
+            continue
+        break
+    except ValueError:
+        print("Viga! Palun sisesta korrektne arv (murdarv või täisarv).")
 kutusekulu_100km = (tangitud_liitrid / labitud_kilomeetrid) * 100
 print(f"\nSinu auto keskmine kütusekulu on {kutusekulu_100km:.2f} liitrit 100 km kohta.")
 
@@ -186,7 +211,15 @@ print(f"\nSinu auto keskmine kütusekulu on {kutusekulu_100km:.2f} liitrit 100 k
 #     Kui kaugele jõuab M minutiga
 
 kiirus_km_h = 29.9
-M = float(input("Sisesta aeg minutites (M): "))
+while True:
+    try:
+        M = float(input("Sisesta aeg minutites (M): "))
+        if M <= 0:
+            print("Aeg ei saa olla negatiivne!")
+            continue
+        break
+    except ValueError:
+        print("Viga! Palun sisesta korrektne arv (murdarv või täisarv).")
 aeg_tundides = M / 60
 vahemaa_km = kiirus_km_h * aeg_tundides
 print(f"Rulluisutaja jõuab {M} minutiga umbes {vahemaa_km:.2f} km kaugusele.")
@@ -200,7 +233,15 @@ print(f"Rulluisutaja jõuab {M} minutiga umbes {vahemaa_km:.2f} km kaugusele.")
 #     Sinu valem leiab ja väljastab tunnid ja minutid
 #     Näiteks: sisestus 72, vastus 1:12
 
-minutid_kokku = int(input("Sisesta aeg minutites: "))
+while True:
+    try:
+        minutid_kokku = int(input("Sisesta aeg minutites: "))
+        if minutid_kokku < 0:
+            print("Aeg ei saa olla negatiivne!")
+            continue
+        break
+    except ValueError:
+        print("Viga! Palun sisesta korrektne arv (murdarv või täisarv).")
 tunnid = minutid_kokku // 60
 minutid = minutid_kokku % 60
 print(f"Vastus {tunnid}:{minutid:02d}")
