@@ -1,5 +1,21 @@
 
 # Ülesanne 1.
+# Kirjuta programm, mis sind tervitab ja kuvab ekraanile tänane kuupäev moduli datetime kasutades ja date.today() funktsiooni abil.
+# from datetime import *
+# tana=date.today()
+# print(f"Täna on {tana}")
+# Kasuta erinevate formaatide kuvamiseks ekraanile järgmised funktsioonid:
+# # 27/12/2022
+# tana = tana.strftime("%d/%m/%Y")
+# # December 27, 2022
+# tana = tana.strftime("%B %d, %Y")
+# # 12/27/22
+# tana = tana.strftime("%m/%d/%y")
+# # Dec-27-2022
+# tana = tana.strftime("%b-%d-%Y")
+# Omadused day, month, year kasutatakse päeva, kuu ja aasta parameetri leidmiseks date klassist.
+# Arvuta mitu päeva on jäänud kuu lõpuni, aasta lõpuni.
+# Arvuta oma vanus aastates, kuudes ja päevades.
 
 from datetime import *
 tana = date.today()
@@ -17,6 +33,7 @@ print(f"Tere! \nTäna on {tana3}")
 tana4 = tana.strftime("%b-%d-%Y")
 print(f"Tere! \nTäna on {tana4}")
 
+
 kuulõpuni = monthrange(tana.year, tana.month)[1] - tana.day
 print("Kuu lõpuni on jäänud", kuulõpuni, "päeva.")
 aastalõpuni = (date(tana.year, 12, 31) - tana).days
@@ -31,7 +48,11 @@ print((aastalõpuni%365)//30, "kuud ja")
 print((aastalõpuni%365)%30, "päeva vana.")
 
 
+
 # Ülesanne 2.
+# Koosta programm on öeldud tehte 3 + 8 / (4 - 2) * 4 vastuse?
+# +Kuidas mõjutab sulgude kasutamine/kasutamata jätmine tööd?
+# +Katseta erinevaid kombinatsioone paralleelselt ning lisa ka selgitavad tekstid, et väljund oleks arusaadav.
 
 tulemus_1 = 3 + 8 / (4 - 2) * 4
 tulemus_2 = 3 + 8 / 4 - 2 * 4
@@ -43,10 +64,12 @@ print(f"Liitmine esimesena (3 + 8) / (4 - 2) * 4 vastus: {tulemus_3}")
 print(f"Kogu jagaja sulgudes 3 + 8 / ((4 - 2) * 4) vastus: {tulemus_4}")
 
 
+
 # Ülesanne 3.
+# Ruudu sees asub ring. Ringi raadius on R.
+# Leia ja väljasta ekraanile ruudu pindala, ruudu ümbermõõt, ringi pindala, ringi ümbermõõt.
 
 import math
-
 R = float(input("Sisesta ringi raadius R: "))
 a = 2 * R
 ruudu_pindala = a ** 2
@@ -60,7 +83,15 @@ print(f"Ringi pindala: {round(ringi_pindala, 2)}")
 print(f"Ringi ümbermõõt: {round(ringi_ümbermoot, 2)}")
 
 
+
 # Ülesanne 4.
+# Koosta programm, mis arvutab välja Maa ümbermõõdu ekvaatori kohal 2-eurostes müntides ehk teisisõnu: 
+# kui palju 2-euroseid münte tuleb panna üksteise kõrvale, 
+# et rida ulatuks ümber Maa. Kasuta teadmist, 
+# et Maa raadius ekvaatori kohal on 6378 km. 
+# Algandmed (Maa raadius, mündi läbimõõt jne) omista programmi alguses sisukate nimedega muutujatele. Kuna ümbermõõdu arvutamiseks tuleb kasutada  PI-d (3,14...), siis võid selle (umbkaudse) väärtuse otse programmi kirjutada.  
+# Püüdke välja mõelda viise, kuidas juhuslikest vigadest valemis hoiduda (teisendamised, ümardamise täpsus jne). Võimalusel võrrelge tulemusi teistega. Kui on erinevusi, leidke ühiselt põhjused.
+# Kas programm on piisavalt hästi kirjutatud, et algandmete muutumise korral (näiteks juhul, kui on vaja arvutada Marsi ümbermõõtu 1-eurostes müntides) on parandusi selge ja lihtne teha?
 
 maa_ümbermoot_km = 40075.017
 mündi_diameeter_mm = 25.75
@@ -69,7 +100,11 @@ müntide_arv = maa_ümbermoot_mm / mündi_diameeter_mm
 print(f"Maa ekvaatori kohal ümbermõõdu katmiseks läheb vaja umbes {round(müntide_arv):,} münti.")
 
 
+
 # Ülesanne 5.
+# Eelnevaid teadmisi kasutades kirjuta programm, mis väljastaks:
+# kill-koll kill-koll killadi-koll kill-koll kill-koll killadi-koll kill-koll kill-koll kill-koll
+# kill-koll
 
 osa1 = "kill-koll"
 osa2 = "killadi-koll"
@@ -80,7 +115,24 @@ tekst = "kill-koll kill-koll killadi-koll kill-koll kill-koll killadi-koll kill-
 print(tekst.title())
 
 
+
 # Ülesanne 6.
+# Koosta programm, mis väljastaks järgmised laulusõnad suurte tähtedega:
+#
+# Rong see sõitis tsuhh tsuhh tsuhh,
+# piilupart oli rongijuht.
+# Rattad tegid rat tat taa,
+# rat tat taa ja tat tat taa.
+# Aga seal rongi peal,
+# kas sa tead, kes olid seal?
+#
+# Rong see sõitis tuut tuut tuut,
+# piilupart oli rongijuht.
+# Rattad tegid kill koll koll,
+# kill koll koll ja kill koll kill.
+#
+#
+# ....Sisend, väljund, tingimus....
 
 tekst = (
 '''    
@@ -100,7 +152,9 @@ tekst = (
 print(tekst.upper())
 
 
+
 # Ülesanne 7.
+# Koosta programm, mis küsib kasutajalt ristküliku lähiskülgede pikkused ning väljastab ekraanile ristküliku ümbermõõdu ja pindala.
 
 a = float(input("Sisesta esimese külje pikkus: "))
 b = float(input("Sisesta teise külje pikkus: "))
@@ -110,7 +164,13 @@ print(f"Ristküliku ümbermõõt on: {ümbermoot}")
 print(f"Ristküliku pindala on: {pindala}")
 
 
+
 # Ülesanne 8.
+# Kütusekulu arvutamine
+#
+#     Kasutaja sisestab tangitud kütuse liitrid
+#     Kasutaja sisestab läbitud kilomeetrid
+#     Programm leiab kütusekulu 100km kohta keskmiselt
 
 tangitud_liitrid = float(input("Sisesta tangitud kütuse liitrid: "))
 labitud_kilomeetrid = float(input("Sisesta läbitud kilomeetrid: "))
@@ -118,7 +178,12 @@ kutusekulu_100km = (tangitud_liitrid / labitud_kilomeetrid) * 100
 print(f"\nSinu auto keskmine kütusekulu on {kutusekulu_100km:.2f} liitrit 100 km kohta.")
 
 
+
 # Ülesanne 9.
+# Rulluisutajad
+#
+#     Rulluisutaja keskmine kiirus on 29,9km/h
+#     Kui kaugele jõuab M minutiga
 
 kiirus_km_h = 29.9
 M = float(input("Sisesta aeg minutites (M): "))
@@ -127,7 +192,13 @@ vahemaa_km = kiirus_km_h * aeg_tundides
 print(f"Rulluisutaja jõuab {M} minutiga umbes {vahemaa_km:.2f} km kaugusele.")
 
 
+
 # Ülesanne 10.
+# Ajateisendus
+
+#     Kasutaja sisestab aja minutites
+#     Sinu valem leiab ja väljastab tunnid ja minutid
+#     Näiteks: sisestus 72, vastus 1:12
 
 minutid_kokku = int(input("Sisesta aeg minutites: "))
 tunnid = minutid_kokku // 60
