@@ -23,6 +23,7 @@
   <ItemGroup>
     <Compile Include="Programmeerimise_alused_26.py" />
     <Compile Include="töö11.py" />
+    <Compile Include="Töö_1_3.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
