@@ -144,8 +144,206 @@ else:
 
 
 
-# 8 Poes
-# Küsi inimeselt poes eraldi kas ta soovib osta piima, saia, leiba jne. Loo juhuslikud hinnad ja küsi mitu tükki tahad osta, kui tahad. Teata, mis summa maksma läheb(Kuva ekraanil tšekk).
+# 8. Poes
+# Küsi kasutajalt iga toote kohta eraldi, kas ta soovib seda osta: piim, sai, leib ja vähemalt kaks toodet veel.
+#     Toodete hinnad loo juhuslikult moodulist random, näiteks round(random.uniform(0.5, 3), 2).
+#     Kui kasutaja soovib toodet osta, küsi kogus. Kontrolli, et kogus on täisarv (isdigit()).
+#     Lõpus kuva tšekk: iga ostetud toote nimi, kogus, hind ja summa ning kõige all kogusumma.
+
+import random
+tooted = ["piim", "sai", "leib", "juust", "õunad"]
+hinnad = {}
+for toode in tooted:
+    hinnad[toode] = round(random.uniform(0.50, 5.00), 2)
+
+ostukorv = []
+kogusumma = 0.0
+
+print("Tere tulemast poodi! Vasta 'jah' või 'ei'.\n")
+
+for toode in tooted:
+    hind = hinnad[toode]
+    vastus = input(f"Kas soovid osta toodet '{toode}' (hind {hind:.2f} €)? ").strip().lower()
+    
+    if vastus == "jah":
+        ostukorv.append(toode)
+        kogusumma += hind
+
+print("\n--- OSTUTŠEKK ---")
+if ostukorv:
+    for toode in ostukorv:
+        print(f"- {toode.capitalize()}: {hinnad[toode]:.2f} €")
+    print(f"Kokku tasuda: {kogusumma:.2f} €")
+else:
+    print("Ostukorv on tühi.")
+
+
+# 9. Ruut
+# Kasutaja sisestab nelinurga nelja külje pikkused. Programm teatab, kas tegemist saab olla ruuduga (kõik küljed on võrdsed). Kontrolli ka, et kõik pikkused on positiivsed.
+# Koosta programmi kohta plokkskeem ja salvesta see PNG-pildina programmiga samasse kausta.
+
+a = float(input("Sisesta esimese külje pikkus: "))
+b = float(input("Sisesta teise külje pikkus: "))
+c = float(input("Sisesta kolmanda külje pikkus: "))
+d = float(input("Sisesta neljanda külje pikkus: "))
+
+if a <= 0 or b <= 0 or c <= 0 or d <= 0:
+    print("Viga! Kõik külgede pikkused peavad olema positiivsed.")
+elif a == b == c == d:
+    print("Tegemist saab olla ruuduga.")
+else:
+    print("Tegemist ei ole ruuduga, sest küljed ei ole võrdsed.")
+
+
+
+# 10. Matemaatika
+# Kasutaja sisestab kaks arvu. Seejärel küsib programm, millist tehet ta soovib (+, -, *, /), ja kuvab tulemuse.
+#     Kui sisestatakse tundmatu tehtemärk, kuva veateade.
+#     Nulliga jagamise korral kuva arusaadav teade, mitte veateade Pythonist.
+# Koosta programmi kohta plokkskeem ja salvesta see PNG-pildina programmiga samasse kausta.
+
+arv1 = float(input("Sisesta esimene arv: "))
+arv2 = float(input("Sisesta teine arv: "))
+tehe = input("Vali tehe (+, -, *, /): ")
+
+if tehe == "+":
+    print("Tulemus:", arv1 + arv2)
+elif tehe == "-":
+    print("Tulemus:", arv1 - arv2)
+elif tehe == "*":
+    print("Tulemus:", arv1 * arv2)
+elif tehe == "/":
+    if arv2 == 0:
+        print("Viga! Nulliga jagada ei saa.")
+    else:
+        print("Tulemus:", arv1 / arv2)
+else:
+    print("Viga! Tundmatu tehtemärk.")
+
+
+
+# 11. Juubel
+# Kasutaja sisestab oma sünniaasta. Programm arvutab, mitu aastat ta sel aastal saab, ja ütleb, kas tegemist on juubeliga (vanus jagub 10-ga). Kui ei ole, ütle, mitu aastat on järgmise juubelini.
+# Vihje: jooksva aasta saad date.today().year abil, jäägi % abil.
+# Plokkskeemi pole vaja.
+
+from datetime import date
+
+sünniaasta = int(input("Sisesta oma sünniaasta: "))
+praegune_aasta = date.today().year
+vanus = praegune_aasta - sünniaasta
+
+print(f"Sa saad sel aastal {vanus}-aastaseks.")
+
+if vanus % 10 == 0:
+    print("Palju õnne! Tegemist on juubeliga!")
+else:
+    aastaid_juubelini = 10 - (vanus % 10)
+    print(f"Tegemist ei ole juubeliga. Järgmise juubelini on {aastaid_juubelini} aastat.")
+
+
+
+# 12. Müük
+# Kasutaja sisestab toote hinna. Kui hind on kuni 10 eurot, saab ta 10% allahindlust. Üle 10 euro maksvad tooted saavad 20% allahindlust. Kuva toote lõplik hind kahe komakohaga.
+# Plokkskeemi pole vaja.
+
+hind = float(input("Sisesta toote hind (€): "))
+
+if hind <= 0:
+    print("Viga! Hind peab olema positiivne arv.")
+elif hind <= 10:
+    lõplik_hind = hind * 0.90
+    print(f"Rakendus 10% allahindlus. Lõplik hind on {lõplik_hind:.2f} €.")
+else:
+    lõplik_hind = hind * 0.80
+    print(f"Rakendus 20% allahindlus. Lõplik hind on {lõplik_hind:.2f} €.")
+
+
+
+# 13. Jalgpallimeeskond
+# Loo programm, mis kontrollib, kas kandideerija sobib meeskonda. Meeskonda võetakse ainult 16–18-aastaseid mehi.
+#     Küsi kõigepealt sugu.
+#     Kui kandideerija on naissoost, siis vanust üldse ei küsita ja programm teatab kohe, et ta ei sobi.
+#     Meessoost kandideerijalt küsi vanus ja kontrolli, kas see jääb vahemikku 16–18.
+
+sugu = input("Sisesta oma sugu (M/N või mees/naine): ").strip().lower()
+
+if sugu == "m" or sugu == "mees":
+    vanus = int(input("Sisesta oma vanus: "))
+    if 16 <= vanus <= 18:
+        print("Palju õnne! Sa sobid meeskonda.")
+    else:
+        print("Kahjuks sa ei sobi meeskonda vanuse tõttu (lubatud vanus on 16–18).")
+elif sugu == "n" or sugu == "naine":
+    print("Kahjuks sa ei sobi, sest meeskonda võetakse ainult mehi.")
+else:
+    print("Viga! Tundmatu sugu.")
+
+
+
+# 14. Busside logistika
+# On vaja transportida teatud arv inimesi bussidega, milles on teatud arv kohti. Programm küsib inimeste arvu ja ühe bussi kohtade arvu ning arvutab:
+#     mitu bussi on vaja, et kõik inimesed kohale saaksid;
+#     mitu inimest on viimases bussis, kui kõik eelmised bussid on täiesti täis.
+# Kontrolli, et mõlemad sisestatud arvud on positiivsed täisarvud.
+# Vihje: kasuta täisarvulist jagamist // ja jääki %. Mõtle, mis juhtub, kui inimesed mahuvad bussidesse täpselt ära.
+
+inimesed_sisend = input("Sisesta inimeste arv: ")
+kohad_sisend = input("Sisesta ühe bussi kohtade arv: ")
+
+if inimesed_sisend.isdigit() and kohad_sisend.isdigit():
+    inimesed = int(inimesed_sisend)
+    kohad = int(kohad_sisend)
+
+    if inimesed <= 0 or kohad <= 0:
+        print("Viga! Mõlemad arvud peavad olema positiivsed täisarvud.")
+    else:
+        täis_busse = inimesed // kohad
+        jaak = inimesed % kohad
+
+        if jaak == 0:
+            busse_kokku = täis_busse
+            viimases_bussis = kohad
+        else:
+            busse_kokku = täis_busse + 1
+            viimases_bussis = jaak
+
+        print(f"Vaja on {busse_kokku} bussi.")
+        print(f"Viimases bussis on {viimases_bussis} inimest.")
+else:
+    print("Viga! Palun sisesta ainult positiivsed täisarvud.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
